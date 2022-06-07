@@ -1,0 +1,70 @@
+% º∆À„capacity
+clear;
+clc
+tic
+run_num = 6 ;
+service_cs = 0;
+service_cs_number = [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1];
+cycle_length = 120;
+each_capacity = zeros(1,run_num);
+capacity_average = zeros(1,length(service_cs_number));
+buffer_number = 4;
+berth_number = 5;
+dist_num = 1;
+overtaking_in = 0;
+overtaking_out = 1;
+for m = 1: length(cycle_length_number)
+      cycle_length = cycle_length_number(m);
+    for n = 1: run_num
+        each_capacity(n) = capacity_clc(berth_number,buffer_number,dist_num,cycle_length,service_cs,overtaking_in,overtaking_out);
+        capacity_average(m) = capacity_average(m)+each_capacity(n);
+        fprintf('1_n = %d\n',n);
+    end
+    capacity_average(m) = capacity_average(m) / run_num;
+    fprintf('1_m = %d\n',m);
+end
+xlswrite('capacity.xlsx',capacity_average',5,'A1');
+% buffer_number = 3;
+% each_capacity = zeros(1,run_num);
+% capacity_average = zeros(1,length(cycle_length_number));
+% for m = 1: length(cycle_length_number)
+%       cycle_length = cycle_length_number(m);
+%     for n = 1: run_num
+%         each_capacity(n) = capacity_clc(berth_number,buffer_number,dist_num,cycle_length,service_cs,overtaking_in,overtaking_out);
+%         capacity_average(m) = capacity_average(m)+each_capacity(n);
+%         fprintf('2_n = %d\n',n);
+%     end
+%     capacity_average(m) = capacity_average(m) / run_num;
+%     fprintf('2_m = %d\n',m);
+% end
+% xlswrite('capacity.xlsx',capacity_average',4,'B3');
+% buffer_number = 0;
+% overtaking_in = 0;
+% overtaking_out = 1;
+% each_capacity = zeros(1,run_num);
+% capacity_average = zeros(1,length(cycle_length_number));
+% for m = 1: length(cycle_length_number)
+%       cycle_length = cycle_length_number(m);
+%     for n = 1: run_num
+%         each_capacity(n) = capacity_clc(berth_number,buffer_number,dist_num,cycle_length,service_cs,overtaking_in,overtaking_out);
+%         capacity_average(m) = capacity_average(m)+each_capacity(n);
+%         fprintf('3_n = %d\n',n);
+%     end
+%     capacity_average(m) = capacity_average(m) / run_num;
+%     fprintf('3_m = %d\n',m);
+% end
+% xlswrite('capacity.xlsx',capacity_average',4,'C3');
+% buffer_number = 3;
+% each_capacity = zeros(1,run_num);
+% capacity_average = zeros(1,length(cycle_length_number));
+% for m = 1: length(cycle_length_number)
+%       cycle_length = cycle_length_number(m);
+%     for n = 1: run_num
+%         each_capacity(n) = capacity_clc(berth_number,buffer_number,dist_num,cycle_length,service_cs,overtaking_in,overtaking_out);
+%         capacity_average(m) = capacity_average(m)+each_capacity(n);
+%         fprintf('4_n = %d\n',n);
+%     end
+%     capacity_average(m) = capacity_average(m) / run_num;
+%     fprintf('4_m = %d\n',m);
+% end
+% xlswrite('capacity.xlsx',capacity_average',4,'D3');
